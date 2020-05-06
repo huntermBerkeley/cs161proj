@@ -343,7 +343,7 @@ func getFile(response http.ResponseWriter, request *http.Request, username strin
 		return
 	}
 
-	//fmt.Println("File " + filename + " is owned by " + owner + ", downloading now...")
+	fmt.Println("File " + filename + " is owned by " + owner + ", downloading now...")
 
 
 	//and serve
