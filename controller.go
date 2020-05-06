@@ -222,7 +222,7 @@ func processUpload(response http.ResponseWriter, request *http.Request, username
 
 
 	// replace this statement
-	//fmt.Fprintf(response, "File uploaded!")
+	fmt.Fprintf(response, "File uploaded!")
 
 	//////////////////////////////////
 	// END TASK 3: YOUR CODE HERE
