@@ -348,9 +348,10 @@ func getFile(response http.ResponseWriter, request *http.Request, username strin
 
 	//and serve
 	//fmt.Fprintf(response, "File " + filename + " downloaded!")
+	setNameOfServedFile(response, filename)
 	http.ServeFile(response, request, fileString)
 
-	setNameOfServedFile(response, filename)
+
 
 	//////////////////////////////////
 	// END TASK 5: YOUR CODE HERE
