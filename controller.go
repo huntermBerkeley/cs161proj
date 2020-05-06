@@ -278,7 +278,7 @@ func listFiles(response http.ResponseWriter, request *http.Request, username str
 		}
 		//now make and add
 		path := filepath.Join(".", "files", owner, filename)
-		fmt.Println("filename: " + filename + ", username: " + username + ", path: " + path)
+		//fmt.Println("filename: " + filename + ", username: " + username + ", path: " + path)
 		filestore.Filename = filename
 		filestore.FileOwner = owner
 		filestore.FilePath = path
@@ -307,7 +307,7 @@ func getFile(response http.ResponseWriter, request *http.Request, username strin
 
 	_ = fileString
 
-	fmt.Println("User " + username + "opening file at " + fileString)
+	//fmt.Println("User " + username + "opening file at " + fileString)
 	idString := strings.TrimPrefix(fileString, "files/")
 
 	//now extract
@@ -322,7 +322,7 @@ func getFile(response http.ResponseWriter, request *http.Request, username strin
 
 	// replace this line
 
-	fmt.Println("\n\nUser " + username + " is trying to access file at loc " + filename + " with path: " + fileString)
+	//fmt.Println("\n\nUser " + username + " is trying to access file at loc " + filename + " with path: " + fileString)
 
 	//now query to see if the file is in their database - can only exist once
 	// db.QueryRow is ok
@@ -343,7 +343,7 @@ func getFile(response http.ResponseWriter, request *http.Request, username strin
 		return
 	}
 
-	fmt.Println("File " + filename + " is owned by " + owner + ", downloading now...")
+	//fmt.Println("File " + filename + " is owned by " + owner + ", downloading now...")
 
 
 	//and serve

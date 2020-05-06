@@ -65,7 +65,7 @@ func UserAuth(next http.Handler) http.Handler {
 
 		//fmt.Println("\n\nStarting read")
 		err2 := row.Scan(&username, &expire)
-		fmt.Println(err)
+		//fmt.Println(err)
 
 		if err2 == sql.ErrNoRows {
 			fmt.Println("User not found")
