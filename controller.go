@@ -164,7 +164,6 @@ func processUpload(response http.ResponseWriter, request *http.Request, username
 		response.WriteHeader(http.StatusInternalServerError)
 		return
 	}
-	fmt.Println("Filename is ", filename)
 
 	//now add file to user
 	db.Exec("INSERT INTO files VALUES (NULL, ?, ?, ?)", username, username, filename)
@@ -181,7 +180,7 @@ func processUpload(response http.ResponseWriter, request *http.Request, username
 		return
 	}
 
-	fmt.Println("ID is ", fileID)
+	//fmt.Println("ID is ", fileID)
 
 
 	//now load the file
@@ -196,7 +195,7 @@ func processUpload(response http.ResponseWriter, request *http.Request, username
 
 	fileloc := "./"+filepath.Join("files", username, filename)
 
-	fmt.Println("Filepath is ", fileloc)
+	//fmt.Println("Filepath is ", fileloc)
 
 	f, err := os.Create(fileloc)
 
@@ -212,17 +211,18 @@ func processUpload(response http.ResponseWriter, request *http.Request, username
 	amount, err:= f.Write(data)
 
 	if err != nil{
-		fmt.Println("Failure to write to file")
+		//fmt.Println("Failure to write to file")
 		response.WriteHeader(http.StatusInternalServerError)
 		fmt.Fprint(response, err.Error())
 		return
 	}
 
-	fmt.Printf("Wrote %d bytes\n", amount)
+	_ = amount
+	//fmt.Printf("Wrote %d bytes\n", amount)
 
 
 	// replace this statement
-	fmt.Fprintf(response, "File uploaded!")
+	//fmt.Fprintf(response, "File uploaded!")
 
 	//////////////////////////////////
 	// END TASK 3: YOUR CODE HERE

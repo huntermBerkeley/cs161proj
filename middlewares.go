@@ -55,15 +55,15 @@ func UserAuth(next http.Handler) http.Handler {
 		row := db.QueryRow("SELECT username, expires FROM sessions WHERE token = ?", sessionToken)
 
 		// TODO: make sure the session token exists (i.e. your query returned something)
-		fmt.Println("Made it to here, row is ", row)
-		fmt.Println("Session Token is ", sessionToken)
+		//fmt.Println("Made it to here, row is ", row)
+		//fmt.Println("Session Token is ", sessionToken)
 
 
-		printTable(db, "sessions")
+		//printTable(db, "sessions")
 	  var username string
 		var expire time.Time
 
-		fmt.Println("\n\nStarting read")
+		//fmt.Println("\n\nStarting read")
 		err2 := row.Scan(&username, &expire)
 		fmt.Println(err)
 
@@ -74,12 +74,8 @@ func UserAuth(next http.Handler) http.Handler {
 			return
 
 		} else{
-			fmt.Println("User is " + username + ", checking expiration.")
 			if (expire.Before(time.Now())){
-				fmt.Println("Unexpired! Continuing login ")
 				request = request.WithContext(context.WithValue(request.Context(), userKey, username))
-			} else {
-				fmt.Println("Expired - clearing bad session")
 			}
 
 
